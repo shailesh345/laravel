@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('films.films');
 });
+
+Route::get('/','FilmsController@films');
+
+Route::get('/create','FilmsController@create');
+
+Route::get('/films_description','FilmsController@films_description');
+
+Route::get('/login','FilmsController@login');
+
+Route::get('/register','FilmsController@register');
+
+Route::get('/logout','FilmsController@logout');
