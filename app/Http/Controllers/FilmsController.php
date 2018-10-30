@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Film;
 
 class FilmsController extends Controller
 {
@@ -34,12 +35,26 @@ class FilmsController extends Controller
           'name'=>'required',
           'description'=>'required',
           'release_date'=>'required',
-          'rating'=>'required',
+          'rating'=>'required|numeric',
           'ticket_price'=>'required',
-          'rating'=>'required',
           'country'=>'required',
           'genre'=>'required',
+          'image'=>'required|max:10000|mimes:png,jpg,jpeg,gif',
       ]) ;
+      
+      $filmData=new Film;
+      //Prepare Data to save inti database
+      $filmData->name=$request->input('name');
+      $filmData->description=$request->input('description');
+      $filmData->release_date=$request->input('release_date');
+      $filmData->rating=$request->input('rating');
+      $filmData->ticket_price=$request->input('ticket_price');
+      $filmData->country=$request->input('country');
+      $filmData->genre=$request->input('genre');
+      
+      //Validate image
+      $filmData->image=$image;
+      
      return 'SUCCESS';
     }
     
