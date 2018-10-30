@@ -27,11 +27,20 @@ class FilmsController extends Controller
     
     }
     
-      public function creste_insert()
+      public function create_submit(Request $request)
     {
     
-    
-    
+      $this->validate($request, [
+          'name'=>'required',
+          'description'=>'required',
+          'release_date'=>'required',
+          'rating'=>'required',
+          'ticket_price'=>'required',
+          'rating'=>'required',
+          'country'=>'required',
+          'genre'=>'required',
+      ]) ;
+     return 'SUCCESS';
     }
     
       public function register()

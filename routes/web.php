@@ -19,6 +19,8 @@ Route::get('/','FilmsController@films');
 
 Route::get('/create','FilmsController@create');
 
+Route::post('/create/submit','FilmsController@create_submit');
+
 Route::get('/films_description','FilmsController@films_description');
 
 Route::get('/login','FilmsController@login');

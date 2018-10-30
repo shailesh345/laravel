@@ -25,10 +25,11 @@
     @if(Request::is('/'))
     @include('films.layouts.inc.showcase')
     @endif
-    <div class="col-md-8 col-lg-8">
+    
+    @include('films.layouts.inc.notification')
     @yield('content')
     
-    @include('films.layouts.inc.pager')
+   
     </div>
     <div class="col-md-4 col-lg-4">
     
