@@ -3,15 +3,17 @@
         <h3>Your Comment</h3>
         </div>
         <div class="well well-lg">
-        {!! Form::open(['url' => 'create/submit','enctype' => 'multipart/form-data']) !!}
+        {!! Form::open(['url' => 'comment/submit']) !!}
 <div class="form-group">
-  {{Form::label('user_name', 'Your Name')}}
-  {{Form::text('user_name', '', ['class' => 'form-control','placeholder'=>'Your Name'])}}
+  {{Form::hidden('film_id', $film->id)}}
+  {{Form::hidden('film_slug',str_slug($film->name,"-"))}}
+  {{Form::label('user_name', 'Your Name',['class' => 'required'])}}
+  {{Form::text('user_name', '', ['class' => 'form-control','placeholder'=>'Your Name','required' => 'required'])}}
 </div>
         
         <div class="form-group">
-  {{Form::label('comment', 'Comment')}}
-  {{Form::textarea('comment', '', ['class' => 'form-control','placeholder'=>'Write here'])}}
+  {{Form::label('comment', 'Comment',['class' => 'required'])}}
+  {{Form::textarea('comment', '', ['class' => 'form-control','placeholder'=>'Write here','required' => 'required'])}}
 </div>
         <div class="form-group">
   {{Form::submit('Post',['class'=>'btn btn-sm btn-info'])}}
@@ -24,6 +26,14 @@
         </div>
  <div class="well well-lg">
         <h4>User Comments</h4>
+        @if(count($comments) > 0)
+@foreach($comments as $comment)
+         <blockquote>
+    <p>{{$comment->comment}}</p>
+    <footer>{{$comment->user_name}}</footer>
+  </blockquote>
+@endforeach
+@endif
         </div>
 @endsection
    
