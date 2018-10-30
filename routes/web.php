@@ -21,7 +21,7 @@ Route::get('/create','FilmsController@create');
 
 Route::post('/create/submit','FilmsController@create_submit');
 
-Route::get('/films_description','FilmsController@films_description');
+Route::get('/films/{name}/{id}','FilmsController@film_description');
 
 Route::get('/login','FilmsController@login');
 

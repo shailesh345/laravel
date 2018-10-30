@@ -2,7 +2,7 @@
 @section('content')
 <h1>Create Film</h1>
 <div class="form-horizontal" style="margin-bottom:55px;">
-{!! Form::open(['url' => 'create/submit']) !!}
+{!! Form::open(['url' => 'create/submit','enctype' => 'multipart/form-data']) !!}
 <div class="form-group">
   {{Form::label('name', 'Film Name')}}
   {{Form::text('name', '', ['class' => 'form-control','placeholder'=>'Enter Film Name'])}}
@@ -20,7 +20,7 @@
 
 <div class="form-group">
   {{Form::label('rating', 'Rating')}}
-  {{Form::selectRange('rating',1,10,null,['class' => 'form-control','placeholder'=>'Select Rating'])}}
+  {{Form::selectRange('rating',1,5,null,['class' => 'form-control','placeholder'=>'Select Rating'])}}
 </div>
 
 <div class="form-group">
@@ -39,7 +39,7 @@
   {{Form::label('genre', 'Genres')}}
   </div>
     <div class="col-md-4">
-  {{Form::select('country',['action'=>'Action','romance'=>'Romance','drama'=>'Drama','scifi'=>'Sci-Fi'],null ,['class' => 'form-control','placeholder'=>'Genres Type'])}}
+  {{Form::select('genre[]',['action'=>'Action','romance'=>'Romance','drama'=>'Drama','scifi'=>'Sci-Fi'],null ,['class' => 'form-control','placeholder'=>'Genres Type'])}}
   </div>
   <div class="col-md-2">
     <span class="add_more_span">{{Form::button('+',['class'=>'btn btn-xs btn-success add_more'])}}</span>

@@ -1,4 +1,4 @@
-   @yield('sidebar')
+   @section('sidebar')
         <div class="well well-lg">
         <h3>Recent Films</h3>
         <ol>
@@ -7,4 +7,4 @@
         <li>Kaho na pyar hai</li>
         </ol>
         </div>
-   
+   @endsection

@@ -15,6 +15,8 @@
         
  <link rel="stylesheet" type="text/css" href="{{URL::asset('css/style.css')}}">
  
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
         <title>Codeline Laravel Task</title>
 
     </head>
@@ -26,14 +28,15 @@
     @include('films.layouts.inc.showcase')
     @endif
     
+     <div class="col-md-8 col-lg-8">
     @include('films.layouts.inc.notification')
     @yield('content')
     
    
     </div>
     <div class="col-md-4 col-lg-4">
+    @yield('sidebar')
     
-    @include('films.layouts.inc.sidebar')
     </div>
     
     </div>

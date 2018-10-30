@@ -5,6 +5,5 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <ul class="pager">
-  <li><a href="#">Previous</a></li>
-  <li><a href="#">Next</a></li>
+ {{ $filmlist->links() }}
 </ul>

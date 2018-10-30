@@ -4,20 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Film;
-
 class FilmsController extends Controller
 {
-    public function films()
+    public function films($pageno=FALSE)
     {
-    
-    return view('films.films');
+    if(!$pageno){$pageno=0;}
+    return view('films.films')->with('filmlist',Film::where('id','>',$pageno)->paginate(1));
     
     }
     
-      public function film_description()
+      public function film_description($name,$id)
     {
-    
-    return view('films.film_description');
+    // var_dump(Film::where('id',$id)->get());
+    return view('films.film_description')->with('film_discription',Film::where('id',$id)->get());
     
     }
     
@@ -39,7 +38,7 @@ class FilmsController extends Controller
           'ticket_price'=>'required',
           'country'=>'required',
           'genre'=>'required',
-          'image'=>'required|max:10000|mimes:png,jpg,jpeg,gif',
+          'image'=>'required|image|max:10000|mimes:png,jpg,jpeg,gif',
       ]) ;
       
       $filmData=new Film;
@@ -50,12 +49,20 @@ class FilmsController extends Controller
       $filmData->rating=$request->input('rating');
       $filmData->ticket_price=$request->input('ticket_price');
       $filmData->country=$request->input('country');
-      $filmData->genre=$request->input('genre');
+      $filmData->genre=json_encode((object)$request->input('genre'));
       
       //Validate image
-      $filmData->image=$image;
+        if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $name = time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/film_images');
+        $image->move($destinationPath, $name);
+    }
+      $filmData->image=$name;
       
-     return 'SUCCESS';
+     $filmData->save();
+      
+     return redirect('/create')->with('success','Film record successfully created');
     }
     
       public function register()
