@@ -76,11 +76,13 @@ var genresDataRow=$("#genres_init").html();
 $(document).on("click",".add_more",function(){
 $("#genres_init").append(genresDataRow);
 rm_btn();
+return ;
 });
 //remove
 $(document).on("click",".add_remove",function(){
 $(this).parents('.row').first().remove();
 rm_btn();
+return ;
 });
 });
 </script>
