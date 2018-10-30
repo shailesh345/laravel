@@ -88,4 +88,4 @@ return ;
 </script>
 </div>
 @endsection
-
+@include('films.layouts.inc.sidebar')
