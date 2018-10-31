@@ -23,8 +23,14 @@ Route::post('/create/submit','FilmsController@create_submit');
 
 Route::get('/films/{name}/{id}','FilmsController@film_description');
 
+Route::post('/comment/submit','CommentsController@comment_submit');
+
 Route::get('/login','FilmsController@login');
 
 Route::get('/register','FilmsController@register');
 
 Route::get('/logout','FilmsController@logout');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

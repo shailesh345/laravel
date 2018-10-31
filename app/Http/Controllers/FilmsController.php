@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Film;
+use App\Comment;
 class FilmsController extends Controller
 {
     public function films($pageno=FALSE)
@@ -15,8 +16,7 @@ class FilmsController extends Controller
     
       public function film_description($name,$id)
     {
-    // var_dump(Film::where('id',$id)->get());
-    return view('films.film_description')->with('film_discription',Film::where('id',$id)->get());
+    return view('films.film_description',['film_discription'=>Film::where('id',$id)->get(),'comments'=>Comment::where('film_id',$id)->get()]);
     
     }
     
@@ -64,6 +64,8 @@ class FilmsController extends Controller
       
      return redirect('/create')->with('success','Film record successfully created');
     }
+    
+
     
       public function register()
     {
