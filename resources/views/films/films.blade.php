@@ -14,7 +14,7 @@
 <span class="fa fa-star"></span>
 @endfor
 </li>
-<li class="list-group-item"><a href='/films/{{str_slug($film->name,"-")}}/{{$film->id}}'>Details</a></li>
+<li class="list-group-item"><a href='/films/{{str_slug($film->name,"-")}}/{{$film->id}}'><button class="btn btn-sm btn-info">Get Full Description</button></a></li>
 </ul>
 @endforeach
 @endif
